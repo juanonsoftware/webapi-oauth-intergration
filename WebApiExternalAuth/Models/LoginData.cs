@@ -1,4 +1,6 @@
-﻿namespace WebApiExternalAuth.Models
+﻿using System;
+
+namespace WebApiExternalAuth.Models
 {
     public class LoginData
     {
@@ -8,5 +10,6 @@
         public string Email { get; set; }
         public string Profile { get; set; }
         public string ExternalAccessToken { get; set; }
+        public TimeSpan ExpiresIn { get; set; }
     }
 }
