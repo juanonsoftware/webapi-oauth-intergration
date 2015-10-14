@@ -23,8 +23,8 @@ namespace WebApiExternalAuth.Configuration
             // Configure google authentication
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "592811454485-irj0ateep1jp0fukkg9obn1rm6015qrt.apps.googleusercontent.com",
-                ClientSecret = "i7AMD7wIipImrOpL7bX7IyQ7",
+                ClientId = "592811454485-lbltg7v9gibiets5pekaasrf0hiltjqg.apps.googleusercontent.com",
+                ClientSecret = "nr9MSTaYquDnojiMd8GsjE2m",
                 Provider = new GoogleCustomAuthenticationProvider(),
             });
 

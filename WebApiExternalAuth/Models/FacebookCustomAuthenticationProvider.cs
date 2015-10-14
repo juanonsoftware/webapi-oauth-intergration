@@ -9,7 +9,7 @@ namespace WebApiExternalAuth.Models
         public override Task Authenticated(FacebookAuthenticatedContext context)
         {
             context.Identity.AddClaim(new Claim(Claims.ExternalAccessToken, context.AccessToken));
-            context.Identity.AddClaim(new Claim(Claims.ExternalEmail, context.Email));
+            context.Identity.AddClaim(new Claim(Claims.ExternalExpiresIn, context.ExpiresIn.ToString()));
 
             return base.Authenticated(context);
         }

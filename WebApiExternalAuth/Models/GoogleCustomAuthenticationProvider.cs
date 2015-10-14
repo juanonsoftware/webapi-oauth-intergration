@@ -9,6 +9,7 @@ namespace WebApiExternalAuth.Models
         public override Task Authenticated(GoogleOAuth2AuthenticatedContext context)
         {
             context.Identity.AddClaim(new Claim(Claims.ExternalAccessToken, context.AccessToken));
+            context.Identity.AddClaim(new Claim(Claims.ExternalProfile, context.Profile));
 
             return base.Authenticated(context);
         }

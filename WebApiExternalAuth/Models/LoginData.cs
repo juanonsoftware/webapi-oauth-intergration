@@ -9,8 +9,9 @@ namespace WebApiExternalAuth.Models
         public string LoginProvider { get; set; }
         public string ProviderKey { get; set; }
         public string UserName { get; set; }
-        public string ExternalAccessToken { get; set; }
         public string Email { get; set; }
+        public string Profile { get; set; }
+        public string ExternalAccessToken { get; set; }
 
         public static LoginData FromIdentity(ClaimsIdentity identity)
         {
@@ -37,7 +38,8 @@ namespace WebApiExternalAuth.Models
                 ProviderKey = providerKeyClaim.Value,
                 UserName = identity.FindFirstValue(ClaimTypes.Name),
                 Email = identity.FindFirstValue(ClaimTypes.Email),
-                ExternalAccessToken = identity.FindFirstValue("ExternalAccessToken"),
+                Profile = identity.FindFirstValue(Claims.ExternalProfile),
+                ExternalAccessToken = identity.FindFirstValue(Claims.ExternalAccessToken),
             };
         }
     }
