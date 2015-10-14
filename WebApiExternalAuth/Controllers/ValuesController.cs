@@ -23,7 +23,7 @@ namespace WebApiExternalAuth.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                data = LoginData.FromIdentity(User.Identity as ClaimsIdentity);
+                data = LoginDataParser.Parse(User.Identity as ClaimsIdentity);
             }
 
             return new

@@ -57,6 +57,8 @@
     <Compile Include="Models\FacebookCustomAuthenticationProvider.cs" />
     <Compile Include="Models\GoogleCustomAuthenticationProvider.cs" />
     <Compile Include="Models\LoginData.cs" />
+    <Compile Include="Models\LoginDataParser.cs" />
+    <Compile Include="Models\Providers.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Configuration\WebApiConfig.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

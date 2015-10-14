@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
-using System.Security.Claims;
-
-namespace WebApiExternalAuth.Models
+﻿namespace WebApiExternalAuth.Models
 {
     public class LoginData
     {
@@ -12,35 +8,5 @@ namespace WebApiExternalAuth.Models
         public string Email { get; set; }
         public string Profile { get; set; }
         public string ExternalAccessToken { get; set; }
-
-        public static LoginData FromIdentity(ClaimsIdentity identity)
-        {
-            if (identity == null)
-            {
-                return null;
-            }
-
-            Claim providerKeyClaim = identity.FindFirst(ClaimTypes.NameIdentifier);
-
-            if (providerKeyClaim == null || String.IsNullOrEmpty(providerKeyClaim.Issuer) || String.IsNullOrEmpty(providerKeyClaim.Value))
-            {
-                return null;
-            }
-
-            if (providerKeyClaim.Issuer == ClaimsIdentity.DefaultIssuer)
-            {
-                return null;
-            }
-
-            return new LoginData
-            {
-                LoginProvider = providerKeyClaim.Issuer,
-                ProviderKey = providerKeyClaim.Value,
-                UserName = identity.FindFirstValue(ClaimTypes.Name),
-                Email = identity.FindFirstValue(ClaimTypes.Email),
-                Profile = identity.FindFirstValue(Claims.ExternalProfile),
-                ExternalAccessToken = identity.FindFirstValue(Claims.ExternalAccessToken),
-            };
-        }
     }
 }
