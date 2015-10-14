@@ -1,0 +1,8 @@
+﻿1. Packages
+- Install-Package Microsoft.AspNet.WebApi.Owin
+- Install-Package Microsoft.Owin.Host.SystemWeb
+
+2. Code
+- A startup class
+- A method to create HttpConfiguration
+- A demo controller
