@@ -4,6 +4,7 @@ using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.MicrosoftAccount;
 using Owin;
+using Owin.Security.Providers.Yahoo;
 using WebApiExternalAuth.Models;
 
 namespace WebApiExternalAuth.Configuration
@@ -40,6 +41,12 @@ namespace WebApiExternalAuth.Configuration
                 {
                     ClientId = "0000000044167B8E",
                     ClientSecret = "K1BYOzio7sP36np84MDNdd60jXEvQSH-"
+                });
+
+            app.UseYahooAuthentication(new YahooAuthenticationOptions()
+                {
+                    ConsumerKey = "dj0yJmk9YUxMbXZUY05CWXNaJmQ9WVdrOVIwOVZRalpJTkhNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD05Mg--",
+                    ConsumerSecret = "e398b55be76c5646103c26cc8a1d6a47d26b64dd",
                 });
         }
     }

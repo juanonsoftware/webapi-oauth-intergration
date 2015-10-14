@@ -120,6 +120,9 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Owin.Security.Providers">
+      <HintPath>..\packages\Owin.Security.Providers.1.25\lib\net45\Owin.Security.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="Rabbit.Foundation, Version=1.0.0.15710, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.Foundation.1.6.0\lib\Rabbit.Foundation.dll</HintPath>
       <Private>True</Private>
