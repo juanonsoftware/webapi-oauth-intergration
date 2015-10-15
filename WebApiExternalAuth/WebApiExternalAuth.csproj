@@ -60,6 +60,7 @@
     <Compile Include="Models\LoginData.cs" />
     <Compile Include="Models\LoginDataParser.cs" />
     <Compile Include="Models\Providers.cs" />
+    <Compile Include="Providers\MicrosoftAccountCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\YahooCustomAuthenticationProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Configuration\WebApiConfig.cs" />

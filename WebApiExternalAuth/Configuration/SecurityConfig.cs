@@ -41,7 +41,8 @@ namespace WebApiExternalAuth.Configuration
             app.UseMicrosoftAccountAuthentication(new MicrosoftAccountAuthenticationOptions()
                 {
                     ClientId = "0000000044167B8E",
-                    ClientSecret = "K1BYOzio7sP36np84MDNdd60jXEvQSH-"
+                    ClientSecret = "K1BYOzio7sP36np84MDNdd60jXEvQSH-",
+                    Provider = new MicrosoftAccountCustomAuthenticationProvider()
                 });
 
             app.UseYahooAuthentication(new YahooAuthenticationOptions()
