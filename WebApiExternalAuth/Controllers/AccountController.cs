@@ -1,5 +1,4 @@
 ﻿using System.Web.Http;
-using WebApiExternalAuth.Models;
 
 namespace WebApiExternalAuth.Controllers
 {

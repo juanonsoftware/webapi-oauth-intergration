@@ -30,6 +30,7 @@ namespace WebApiExternalAuth.Models
                     LoginProvider = providerKeyClaim.Issuer,
                     ProviderKey = providerKeyClaim.Value,
                     UserName = identity.FindFirstValue(ClaimTypes.Name),
+                    Name = identity.FindFirstValue(Claims.ExternalName),
                     Email = identity.FindFirstValue(ClaimTypes.Email),
                     ExternalAccessToken = identity.FindFirstValue(Claims.ExternalAccessToken),
                 };
