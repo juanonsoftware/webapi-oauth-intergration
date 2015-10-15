@@ -55,6 +55,7 @@
     <Compile Include="Models\ChallengeResult.cs" />
     <Compile Include="Models\Claims.cs" />
     <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
+    <Compile Include="Providers\GitHubCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\GoogleCustomAuthenticationProvider.cs" />
     <Compile Include="Models\LoginData.cs" />
     <Compile Include="Models\LoginDataParser.cs" />

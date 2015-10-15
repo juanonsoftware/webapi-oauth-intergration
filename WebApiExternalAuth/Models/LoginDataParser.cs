@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Security.Claims;
-using Microsoft.AspNet.Identity;
 
 namespace WebApiExternalAuth.Models
 {
@@ -34,22 +34,29 @@ namespace WebApiExternalAuth.Models
                     ExternalAccessToken = identity.FindFirstValue(Claims.ExternalAccessToken),
                 };
 
-            TryBuildProfile(loginData, identity);
+            TryBuildCustomData(loginData, identity);
 
             return loginData;
         }
 
-        private static void TryBuildProfile(LoginData loginData, ClaimsIdentity identity)
+        private static void TryBuildCustomData(LoginData loginData, ClaimsIdentity identity)
         {
             if (Providers.Facebook.ToString().Equals(loginData.LoginProvider, StringComparison.InvariantCultureIgnoreCase))
             {
                 loginData.Profile = "https://www.facebook.com/" + loginData.ProviderKey;
+                loginData.Properties.Add(Claims.ExternalExpiresIn, identity.FindFirstValue(Claims.ExternalExpiresIn));
                 return;
             }
 
             if (Providers.Google.ToString().Equals(loginData.LoginProvider, StringComparison.InvariantCultureIgnoreCase))
             {
                 loginData.Profile = identity.FindFirstValue(Claims.ExternalProfile);
+                return;
+            }
+
+            if (Providers.GitHub.ToString().Equals(loginData.LoginProvider, StringComparison.InvariantCultureIgnoreCase))
+            {
+                loginData.Profile = "https://github.com/" + loginData.UserName;
                 return;
             }
         }

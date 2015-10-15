@@ -4,6 +4,7 @@
     {
         Unknown = 0,
         Google,
+        GitHub,
         Facebook,
         Microsoft,
         Yahoo,

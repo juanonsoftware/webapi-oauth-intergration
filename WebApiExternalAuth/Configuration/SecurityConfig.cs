@@ -6,7 +6,6 @@ using Microsoft.Owin.Security.MicrosoftAccount;
 using Owin;
 using Owin.Security.Providers.GitHub;
 using Owin.Security.Providers.Yahoo;
-using WebApiExternalAuth.Models;
 using WebApiExternalAuth.Providers;
 
 namespace WebApiExternalAuth.Configuration
@@ -55,7 +54,8 @@ namespace WebApiExternalAuth.Configuration
             app.UseGitHubAuthentication(new GitHubAuthenticationOptions()
             {
                 ClientId = "78e903a27192ee724f5b",
-                ClientSecret = "09aaed1ef94fda54c1430bf8b58f51b8e94733d9"
+                ClientSecret = "09aaed1ef94fda54c1430bf8b58f51b8e94733d9",
+                Provider = new GitHubCustomAuthenticationProvider()
             });
 
         }
