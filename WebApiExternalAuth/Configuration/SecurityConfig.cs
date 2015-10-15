@@ -47,6 +47,7 @@ namespace WebApiExternalAuth.Configuration
                 {
                     ConsumerKey = "dj0yJmk9YUxMbXZUY05CWXNaJmQ9WVdrOVIwOVZRalpJTkhNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD05Mg--",
                     ConsumerSecret = "e398b55be76c5646103c26cc8a1d6a47d26b64dd",
+                    Provider = new YahooCustomAuthenticationProvider()
                 });
         }
     }

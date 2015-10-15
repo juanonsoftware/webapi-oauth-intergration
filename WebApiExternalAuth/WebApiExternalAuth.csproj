@@ -59,6 +59,7 @@
     <Compile Include="Models\LoginData.cs" />
     <Compile Include="Models\LoginDataParser.cs" />
     <Compile Include="Models\Providers.cs" />
+    <Compile Include="Models\YahooCustomAuthenticationProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Configuration\WebApiConfig.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -188,10 +189,10 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52952</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>49678</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49678/</IISUrl>
+          <IISUrl>http://development.com:40678/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
