@@ -46,17 +46,17 @@ window.common = (function () {
 
 var fragment = common.getFragment();
 
-window.location.hash = fragment.state || '';
-
-window.sessionStorage.setItem('auth', JSON.stringify(fragment));
-
-window.location = '/';
-
 //window.location.hash = fragment.state || '';
 
-//window.opener.sessionStorage.setItem('auth', JSON.stringify(fragment));
+//window.sessionStorage.setItem('auth', JSON.stringify(fragment));
 
-//window.opener.location.reload();
+//window.location = '/';
 
-//window.close();
+window.location.hash = fragment.state || '';
+
+window.opener.sessionStorage.setItem('auth', JSON.stringify(fragment));
+
+window.opener.location.reload();
+
+window.close();
 
