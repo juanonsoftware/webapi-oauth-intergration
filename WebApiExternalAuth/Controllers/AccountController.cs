@@ -14,11 +14,5 @@ namespace WebApiExternalAuth.Controllers
 
             return new ChallengeResult(provider, returnUrl, Request);
         }
-
-        [HttpGet]
-        public bool VerifyAuthentication()
-        {
-            return User.Identity.IsAuthenticated;
-        }
     }
 }

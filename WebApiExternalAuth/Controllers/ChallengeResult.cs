@@ -24,13 +24,14 @@ namespace WebApiExternalAuth.Controllers
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
-            var properties = new AuthenticationProperties()
-            {
-                RedirectUri = RedirectUri,
-                AllowRefresh = true
-            };
+            //var properties = new AuthenticationProperties()
+            //{
+            //    RedirectUri = RedirectUri,
+            //    AllowRefresh = true
+            //};
 
-            MessageRequest.GetOwinContext().Authentication.Challenge(properties, AuthenticationProvider);
+            //MessageRequest.GetOwinContext().Authentication.Challenge(properties, AuthenticationProvider);
+            MessageRequest.GetOwinContext().Authentication.Challenge(AuthenticationProvider);
 
             var response = new HttpResponseMessage(HttpStatusCode.Unauthorized)
             {

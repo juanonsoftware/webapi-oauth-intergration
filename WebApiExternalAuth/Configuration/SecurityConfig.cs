@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.MicrosoftAccount;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Owin.Security.Providers.GitHub;
 using Owin.Security.Providers.Yahoo;
@@ -12,16 +12,16 @@ namespace WebApiExternalAuth.Configuration
 {
     public static class SecurityConfig
     {
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
+
+
         public static void ConfigureSecurity(this IAppBuilder app)
         {
-            // Enable the application to use a cookie to store information for the signed in user
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ExternalCookie
-            });
-
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            
+            OAuthBearerOptions=new OAuthBearerAuthenticationOptions();
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 
             // Configure google authentication
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
