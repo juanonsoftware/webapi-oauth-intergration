@@ -10,13 +10,12 @@ namespace WebApiExternalAuth.Providers
         public override Task Authenticated(MicrosoftAccountAuthenticatedContext context)
         {
             context.Identity.AddClaim(new Claim(Claims.ExternalAccessToken, context.AccessToken));
+            context.Identity.AddClaim(new Claim(Claims.ExternalName, context.Name));
 
             if (context.ExpiresIn.HasValue)
             {
                 context.Identity.AddClaim(new Claim(Claims.ExternalExpiresIn, context.ExpiresIn.ToString()));
             }
-
-            //context.Identity.AddClaim(new Claim(Claims.ExternalEmail, context.Email));
 
             return base.Authenticated(context);
         }
