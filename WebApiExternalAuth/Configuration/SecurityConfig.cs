@@ -4,6 +4,7 @@ using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.MicrosoftAccount;
 using Owin;
+using Owin.Security.Providers.GitHub;
 using Owin.Security.Providers.Yahoo;
 using WebApiExternalAuth.Models;
 using WebApiExternalAuth.Providers;
@@ -50,6 +51,13 @@ namespace WebApiExternalAuth.Configuration
                     ConsumerSecret = "e398b55be76c5646103c26cc8a1d6a47d26b64dd",
                     Provider = new YahooCustomAuthenticationProvider()
                 });
+
+            app.UseGitHubAuthentication(new GitHubAuthenticationOptions()
+            {
+                ClientId = "78e903a27192ee724f5b",
+                ClientSecret = "09aaed1ef94fda54c1430bf8b58f51b8e94733d9"
+            });
+
         }
     }
 }
