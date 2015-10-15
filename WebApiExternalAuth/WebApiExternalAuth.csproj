@@ -54,12 +54,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\ChallengeResult.cs" />
     <Compile Include="Models\Claims.cs" />
-    <Compile Include="Models\FacebookCustomAuthenticationProvider.cs" />
-    <Compile Include="Models\GoogleCustomAuthenticationProvider.cs" />
+    <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
+    <Compile Include="Providers\GoogleCustomAuthenticationProvider.cs" />
     <Compile Include="Models\LoginData.cs" />
     <Compile Include="Models\LoginDataParser.cs" />
     <Compile Include="Models\Providers.cs" />
-    <Compile Include="Models\YahooCustomAuthenticationProvider.cs" />
+    <Compile Include="Providers\YahooCustomAuthenticationProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Configuration\WebApiConfig.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

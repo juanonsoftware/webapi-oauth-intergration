@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Owin.Security.Providers.Yahoo;
 
-namespace WebApiExternalAuth.Models
+namespace WebApiExternalAuth.Providers
 {
     public class YahooCustomAuthenticationProvider : YahooAuthenticationProvider
     {

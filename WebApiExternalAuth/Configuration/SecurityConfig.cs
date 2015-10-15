@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.MicrosoftAccount;
 using Owin;
 using Owin.Security.Providers.Yahoo;
 using WebApiExternalAuth.Models;
+using WebApiExternalAuth.Providers;
 
 namespace WebApiExternalAuth.Configuration
 {
