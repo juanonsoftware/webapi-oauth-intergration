@@ -3,3 +3,5 @@
 /WebApiExternalAuth/bin
 /WebApiExternalAuth/obj
 /WebAPI-Owin-Template-Minimal.v11.suo
+/Rabbit.WebApiSampleClient/obj
+/Rabbit.WebApiSampleClient/bin

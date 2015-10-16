@@ -32,9 +32,4 @@ WebAPIClient.getValueWithAccessToken = function () {
     }).done(function (data) {
         debugger;
     });
-
-
-    //$.getJSON(settings.apiServiceBaseUri + 'api/Values', function (data) {
-    //    debugger;
-    //});
 }

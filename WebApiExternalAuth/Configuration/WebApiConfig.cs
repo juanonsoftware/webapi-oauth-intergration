@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Web.Http;
-using System.Web.Http.Cors;
+﻿using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace WebApiExternalAuth.Configuration
 {
@@ -9,8 +8,6 @@ namespace WebApiExternalAuth.Configuration
         public static HttpConfiguration Register()
         {
             var config = new HttpConfiguration();
-
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             config.Routes.MapHttpRoute(
                 name: "ApiAction",

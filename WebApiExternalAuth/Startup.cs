@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Owin;
 using WebApiExternalAuth;
 using WebApiExternalAuth.Configuration;
@@ -14,6 +15,8 @@ namespace WebApiExternalAuth
             var configuration = WebApiConfig.Register();
 
             configuration.RegisterDependencyResolver();
+
+            appBuilder.UseCors(CorsOptions.AllowAll);
 
             appBuilder.ConfigureSecurity();
 
