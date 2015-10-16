@@ -14,13 +14,12 @@ namespace WebApiExternalAuth.Configuration
     {
         public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
 
-
         public static void ConfigureSecurity(this IAppBuilder app)
         {
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-            
-            OAuthBearerOptions=new OAuthBearerAuthenticationOptions();
+
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
             app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 
             // Configure google authentication
