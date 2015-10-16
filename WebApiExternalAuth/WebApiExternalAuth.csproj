@@ -48,9 +48,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\IocConfig.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
-    <Compile Include="Configuration\ServicesConfiguration\ServicesModule.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChallengeResult.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -129,38 +127,6 @@
     </Reference>
     <Reference Include="Owin.Security.Providers">
       <HintPath>..\packages\Owin.Security.Providers.1.25\lib\net45\Owin.Security.Providers.dll</HintPath>
-    </Reference>
-    <Reference Include="Rabbit.Foundation, Version=1.0.0.15710, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Foundation.1.6.0\lib\Rabbit.Foundation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Rabbit.IOC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.IOC.1.0.0-Beta2\lib\Rabbit.IOC.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Rabbit.SimpleInjectorDemo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.SimpleInjectorDemo.1.0.0-Beta1\lib\Rabbit.SimpleInjectorDemo.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SimpleInjector, Version=3.1.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.3.1.0\lib\net45\SimpleInjector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SimpleInjector.Extensions.ExecutionContextScoping, Version=3.1.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.Extensions.ExecutionContextScoping.3.1.0\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SimpleInjector.Integration.Web, Version=3.1.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.Integration.Web.3.1.0\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SimpleInjector.Integration.WebApi, Version=3.1.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.Integration.WebApi.3.1.0\lib\net45\SimpleInjector.Integration.WebApi.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SimpleInjector.Packaging, Version=3.1.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.Packaging.3.1.0\lib\net40-client\SimpleInjector.Packaging.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />

@@ -2,20 +2,12 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Web.Http;
-using Rabbit.SimpleInjectorDemo.Services;
 using WebApiExternalAuth.Models;
 
 namespace WebApiExternalAuth.Controllers
 {
     public class ValuesController : ApiController
     {
-        private readonly IListingService _listingService;
-
-        public ValuesController(IListingService listingService)
-        {
-            _listingService = listingService;
-        }
-
         // GET api/values
         public dynamic Get()
         {

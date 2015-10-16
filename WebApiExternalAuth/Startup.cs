@@ -14,8 +14,6 @@ namespace WebApiExternalAuth
         {
             var configuration = WebApiConfig.Register();
 
-            configuration.RegisterDependencyResolver();
-
             appBuilder.UseCors(CorsOptions.AllowAll);
 
             appBuilder.ConfigureSecurity();

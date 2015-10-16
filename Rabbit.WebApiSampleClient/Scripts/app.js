@@ -1,5 +1,5 @@
 ﻿var settings = {
-    //apiServiceBaseUri: 'http://development.com:40678/',
+    //apiServiceBaseUri: 'http://localhost:40678/',
     apiServiceBaseUri: 'http://localhost:26264/',
 };
 
@@ -26,6 +26,7 @@ WebAPIClient.getValueWithAccessToken = function () {
     var fragment = JSON.parse(sessionStorage.getItem('auth'));
 
     $.ajax(settings.apiServiceBaseUri + 'api/Orders', {
+    //$.ajax(settings.apiServiceBaseUri + 'api/Values', {
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + fragment.access_token);
         }
