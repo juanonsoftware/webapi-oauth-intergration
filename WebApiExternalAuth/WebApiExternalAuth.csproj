@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Configuration\IocConfig.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChallengeResult.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Controllers\ControllerExtensions.cs" />

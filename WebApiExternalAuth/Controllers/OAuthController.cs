@@ -3,7 +3,6 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
@@ -17,27 +16,6 @@ namespace WebApiExternalAuth.Controllers
     {
         [HttpGet]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
-        public dynamic Finish(string returnUrl = null)
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Not authenticated");
-            }
-
-
-            var obj = GenerateLocalAccessTokenResponse(User.Identity.Name);
-
-            var data = LoginDataParser.Parse(User.Identity as ClaimsIdentity);
-
-            var sb = new StringBuilder();
-            sb.Append(returnUrl);
-            sb.AppendFormat("#ex_access_token={0}&provider={1}&name={2}&access_token={3}", data.ExternalAccessToken, data.LoginProvider, data.Name, obj["access_token"]);
-
-            return Redirect(sb.ToString());
-        }
-
-        [HttpGet]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         public IHttpActionResult Login(string provider, string returnUrl = null)
         {
             if (string.IsNullOrWhiteSpace(returnUrl))
@@ -47,17 +25,27 @@ namespace WebApiExternalAuth.Controllers
 
             if (!User.Identity.IsAuthenticated)
             {
-                var continueUrl = Url.Link("ApiAction", new { controller = this.GetControllerName(), action = "Finish", returnUrl = returnUrl });
-                return new ChallengeResult(provider, continueUrl, Request);
+                return new ChallengeResult(provider, Request);
             }
 
-            var obj = GenerateLocalAccessTokenResponse(User.Identity.Name);
+            if (User.Identity.IsAuthenticated)
+            {
+                var loginData = LoginDataParser.Parse(User.Identity as ClaimsIdentity);
+
+                if (!string.Equals(loginData.LoginProvider, provider, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    Request.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                    return new ChallengeResult(provider, Request);
+                }
+            }
+
+            var tokenObject = GenerateLocalAccessTokenResponse(User.Identity.Name);
 
             var data = LoginDataParser.Parse(User.Identity as ClaimsIdentity);
 
             var sb = new StringBuilder();
             sb.Append(returnUrl);
-            sb.AppendFormat("#ex_access_token={0}&provider={1}&name={2}&access_token={3}", data.ExternalAccessToken, data.LoginProvider, data.Name, obj["access_token"]);
+            sb.AppendFormat("#access_token={0}&provider={1}&name={2}", tokenObject["access_token"], data.LoginProvider, data.Name);
 
             return Redirect(sb.ToString());
         }
@@ -66,7 +54,7 @@ namespace WebApiExternalAuth.Controllers
         {
             var tokenExpiration = TimeSpan.FromDays(1);
 
-            ClaimsIdentity identity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
+            var identity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
 
             identity.AddClaim(new Claim(ClaimTypes.Name, userName));
             identity.AddClaim(new Claim("role", "user"));

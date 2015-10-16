@@ -8,33 +8,23 @@ namespace WebApiExternalAuth.Controllers
 {
     public class ChallengeResult : IHttpActionResult
     {
-        public ChallengeResult(string provider, string redirectUri, HttpRequestMessage request)
+        public ChallengeResult(string provider, HttpRequestMessage requestMessage)
         {
             AuthenticationProvider = provider;
-            RedirectUri = redirectUri;
-            MessageRequest = request;
+            RequestMessageMessage = requestMessage;
         }
 
         public string AuthenticationProvider { get; private set; }
 
-        public string RedirectUri { get; private set; }
-
-        public HttpRequestMessage MessageRequest { get; private set; }
+        public HttpRequestMessage RequestMessageMessage { get; private set; }
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
-            //var properties = new AuthenticationProperties()
-            //{
-            //    RedirectUri = RedirectUri,
-            //    AllowRefresh = true
-            //};
-
-            //MessageRequest.GetOwinContext().Authentication.Challenge(properties, AuthenticationProvider);
-            MessageRequest.GetOwinContext().Authentication.Challenge(AuthenticationProvider);
+            RequestMessageMessage.GetOwinContext().Authentication.Challenge(AuthenticationProvider);
 
             var response = new HttpResponseMessage(HttpStatusCode.Unauthorized)
             {
-                RequestMessage = MessageRequest
+                RequestMessage = RequestMessageMessage
             };
 
             return Task.FromResult(response);
