@@ -50,10 +50,9 @@
   <ItemGroup>
     <Compile Include="Configuration\IocConfig.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
-    <Compile Include="Configuration\ServicesConfiguration\ServicesModule.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChallengeResult.cs" />
-    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Controllers\ControllerExtensions.cs" />
     <Compile Include="Models\Claims.cs" />
     <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
@@ -130,10 +129,6 @@
     </Reference>
     <Reference Include="Owin.Security.Providers">
       <HintPath>..\packages\Owin.Security.Providers.1.25\lib\net45\Owin.Security.Providers.dll</HintPath>
-    </Reference>
-    <Reference Include="Rabbit.Foundation, Version=1.0.0.15710, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Foundation.1.6.0\lib\Rabbit.Foundation.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.IOC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.IOC.1.0.0-Beta2\lib\Rabbit.IOC.dll</HintPath>

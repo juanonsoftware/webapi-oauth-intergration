@@ -13,7 +13,7 @@ using WebApiExternalAuth.Models;
 
 namespace WebApiExternalAuth.Controllers
 {
-    public class AuthController : ApiController
+    public class OAuthController : ApiController
     {
         [HttpGet]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
