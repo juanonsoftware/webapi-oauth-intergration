@@ -24,6 +24,11 @@ WebAPIClient.displayAuthInfo = function () {
 WebAPIClient.getValueWithAccessToken = function () {
     var fragment = JSON.parse(sessionStorage.getItem('auth'));
 
+    if (!fragment) {
+        $("#result").text('INFO: Auth is null, please authenticate first.');
+        return;
+    }
+
     $.ajax(settings.apiServiceBaseUri + 'api/Values', {
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + fragment.access_token);
