@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 
-namespace WebApiExternalAuth.Controllers
+namespace WebApiExternalAuth.Models
 {
     public static class ControllerExtensions
     {

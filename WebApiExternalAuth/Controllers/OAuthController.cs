@@ -9,6 +9,7 @@ using System.Text;
 using System.Web.Http;
 using WebApiExternalAuth.Configuration;
 using WebApiExternalAuth.Models;
+using WebApiExternalAuth.Results;
 
 namespace WebApiExternalAuth.Controllers
 {

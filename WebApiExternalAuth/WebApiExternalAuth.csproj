@@ -50,9 +50,9 @@
   <ItemGroup>
     <Compile Include="Configuration\IocConfig.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
-    <Compile Include="Controllers\ChallengeResult.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
-    <Compile Include="Controllers\ControllerExtensions.cs" />
+    <Compile Include="Models\ControllerExtensions.cs" />
     <Compile Include="Models\Claims.cs" />
     <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\GitHubCustomAuthenticationProvider.cs" />
