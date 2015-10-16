@@ -54,6 +54,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChallengeResult.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ControllerExtensions.cs" />
     <Compile Include="Models\Claims.cs" />
     <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\GitHubCustomAuthenticationProvider.cs" />

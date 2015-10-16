@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Rabbit.SimpleInjectorDemo.Services;
+using System;
 using System.Collections.Generic;
-using System.Security.Claims;
 using System.Web.Http;
-using Rabbit.SimpleInjectorDemo.Services;
 using WebApiExternalAuth.Models;
 
 namespace WebApiExternalAuth.Controllers
@@ -23,7 +22,10 @@ namespace WebApiExternalAuth.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                data = LoginDataParser.Parse(User.Identity as ClaimsIdentity);
+                data = new LoginData()
+                {
+                    UserName = User.Identity.Name
+                };
             }
 
             return new

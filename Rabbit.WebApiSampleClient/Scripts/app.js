@@ -1,6 +1,7 @@
 ﻿var settings = {
     //apiServiceBaseUri: 'http://development.com:40678/',
-    apiServiceBaseUri: 'http://localhost:26264/',
+    //apiServiceBaseUri: 'http://localhost:26264/',
+    apiServiceBaseUri: 'http://localhost:40678/',
 };
 
 var WebAPIClient = function () {
@@ -9,8 +10,8 @@ var WebAPIClient = function () {
 WebAPIClient.authExternalProvider = function (provider) {
     var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
 
-    //var externalProviderUrl = settings.apiServiceBaseUri + "api/Auth/Login?provider=" + provider + "&returnUrl=" + redirectUri;
-    var externalProviderUrl = settings.apiServiceBaseUri + "api/Account/ExternalLogin?provider=" + provider;
+    var externalProviderUrl = settings.apiServiceBaseUri + "api/Auth/Login?provider=" + provider + "&returnUrl=" + redirectUri;
+    //var externalProviderUrl = settings.apiServiceBaseUri + "api/Account/ExternalLogin?provider=" + provider;
     //window.location = externalProviderUrl;
     var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
 };
@@ -25,7 +26,7 @@ WebAPIClient.displayAuthInfo = function () {
 WebAPIClient.getValueWithAccessToken = function () {
     var fragment = JSON.parse(sessionStorage.getItem('auth'));
 
-    $.ajax(settings.apiServiceBaseUri + 'api/Orders', {
+    $.ajax(settings.apiServiceBaseUri + 'api/Values', {
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + fragment.access_token);
         }
