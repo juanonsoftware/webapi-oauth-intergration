@@ -132,6 +132,10 @@
       <HintPath>..\packages\Rabbit.IOC.1.0.0-Beta2\lib\Rabbit.IOC.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rabbit.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rabbit.Security.1.0.0\lib\Rabbit.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Rabbit.SimpleInjectorDemo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.SimpleInjectorDemo.1.0.0-Beta1\lib\Rabbit.SimpleInjectorDemo.dll</HintPath>
       <Private>True</Private>
@@ -174,12 +178,6 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.XML" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rabbit.Security\Rabbit.Security.csproj">
-      <Project>{B4B74F84-C796-4DC6-AFE7-2CE654583B43}</Project>
-      <Name>Rabbit.Security</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
