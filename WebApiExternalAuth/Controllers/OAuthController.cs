@@ -8,9 +8,9 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
 using Rabbit.Security;
+using Rabbit.Web.Owin;
 using WebApiExternalAuth.Configuration;
 using WebApiExternalAuth.Models;
-using WebApiExternalAuth.Results;
 
 namespace WebApiExternalAuth.Controllers
 {
@@ -29,7 +29,7 @@ namespace WebApiExternalAuth.Controllers
         {
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
-                returnUrl = Url.Link("DefaultApi", new { controller = "Values" });
+                returnUrl = Url.Link("DefaultApi", new { controller = typeof(ValuesController).GetControllerName() });
             }
 
             if (!User.Identity.IsAuthenticated)

@@ -52,9 +52,7 @@
     <Compile Include="Configuration\Modules\GlobalServicesModule.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
     <Compile Include="Models\LoginDataParser.cs" />
-    <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
-    <Compile Include="Models\ControllerExtensions.cs" />
     <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\GitHubCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\GoogleCustomAuthenticationProvider.cs" />
@@ -139,6 +137,10 @@
     <Reference Include="Rabbit.SimpleInjectorDemo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.SimpleInjectorDemo.1.0.0-Beta1\lib\Rabbit.SimpleInjectorDemo.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Rabbit.Web.Owin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rabbit.Web.Owin.1.0.1\lib\Rabbit.Web.Owin.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector, Version=3.1.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleInjector.3.1.0\lib\net45\SimpleInjector.dll</HintPath>
