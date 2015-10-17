@@ -1,4 +1,4 @@
-﻿namespace WebApiExternalAuth.Models
+﻿namespace Rabbit.Security
 {
     public class Claims
     {

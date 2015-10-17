@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security.Google;
-using WebApiExternalAuth.Models;
+using Rabbit.Security;
 
 namespace WebApiExternalAuth.Providers
 {

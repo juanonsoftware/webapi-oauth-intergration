@@ -49,16 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\IocConfig.cs" />
+    <Compile Include="Configuration\Modules\GlobalServicesModule.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
+    <Compile Include="Models\LoginDataParser.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Models\ControllerExtensions.cs" />
-    <Compile Include="Models\Claims.cs" />
     <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\GitHubCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\GoogleCustomAuthenticationProvider.cs" />
-    <Compile Include="Models\LoginData.cs" />
-    <Compile Include="Models\LoginDataParser.cs" />
     <Compile Include="Models\Providers.cs" />
     <Compile Include="Providers\MicrosoftAccountCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\YahooCustomAuthenticationProvider.cs" />
@@ -175,6 +174,12 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rabbit.Security\Rabbit.Security.csproj">
+      <Project>{B4B74F84-C796-4DC6-AFE7-2CE654583B43}</Project>
+      <Name>Rabbit.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

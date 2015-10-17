@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Linq;
+using Rabbit.Security;
 using WebApiExternalAuth.Configuration;
 using WebApiExternalAuth.Models;
 using WebApiExternalAuth.Results;
@@ -15,6 +16,13 @@ namespace WebApiExternalAuth.Controllers
 {
     public class OAuthController : ApiController
     {
+        private readonly ILoginDataParser _loginDataParser;
+
+        public OAuthController(ILoginDataParser loginDataParser)
+        {
+            _loginDataParser = loginDataParser;
+        }
+
         [HttpGet]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         public IHttpActionResult Login(string provider, string returnUrl = null)
@@ -29,11 +37,13 @@ namespace WebApiExternalAuth.Controllers
                 return new ChallengeResult(provider, Request);
             }
 
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            var loginData = _loginDataParser.Parse(claimsIdentity);
+            claimsIdentity.TryBuildCustomData(ref loginData);
+
             if (User.Identity.IsAuthenticated)
             {
-                var loginData = LoginDataParser.Parse(User.Identity as ClaimsIdentity);
-
-                if (!string.Equals(loginData.LoginProvider, provider, StringComparison.InvariantCultureIgnoreCase))
+                if (!string.Equals(loginData.ProviderName, provider, StringComparison.InvariantCultureIgnoreCase))
                 {
                     Request.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
                     return new ChallengeResult(provider, Request);
@@ -42,11 +52,9 @@ namespace WebApiExternalAuth.Controllers
 
             var tokenObject = GenerateLocalAccessTokenResponse(User.Identity.Name);
 
-            var data = LoginDataParser.Parse(User.Identity as ClaimsIdentity);
-
             var sb = new StringBuilder();
             sb.Append(returnUrl);
-            sb.AppendFormat("#access_token={0}&provider={1}&name={2}", tokenObject["access_token"], data.LoginProvider, data.Name);
+            sb.AppendFormat("#access_token={0}&provider={1}&name={2}", tokenObject["access_token"], loginData.ProviderName, loginData.Name);
 
             return Redirect(sb.ToString());
         }

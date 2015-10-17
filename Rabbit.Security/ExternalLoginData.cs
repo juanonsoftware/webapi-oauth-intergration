@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace WebApiExternalAuth.Models
+namespace Rabbit.Security
 {
-    public class LoginData
+    public class ExternalLoginData
     {
-        public LoginData()
+        public ExternalLoginData()
         {
             Properties = new Dictionary<string, object>();
         }
 
-        public string LoginProvider { get; set; }
+        public string ProviderName { get; set; }
         public string ProviderKey { get; set; }
+
         public string UserName { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }

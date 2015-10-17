@@ -1,7 +1,7 @@
-﻿using Owin.Security.Providers.GitHub;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using WebApiExternalAuth.Models;
+using Owin.Security.Providers.GitHub;
+using Rabbit.Security;
 
 namespace WebApiExternalAuth.Providers
 {

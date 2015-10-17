@@ -1,7 +1,7 @@
-﻿using Microsoft.Owin.Security.MicrosoftAccount;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using WebApiExternalAuth.Models;
+using Microsoft.Owin.Security.MicrosoftAccount;
+using Rabbit.Security;
 
 namespace WebApiExternalAuth.Providers
 {
