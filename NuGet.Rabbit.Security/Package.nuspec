@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Rabbit.Security</id>
+    <version>1.0.0</version>
+    <title>Rabbit.Security</title>
+    <authors>juniho</authors>
+    <owners>RabbitSoftware</owners>
+    <description>
+      Provide extend classes to work with OAuth
+    </description>
+    <releaseNotes>
+    </releaseNotes>
+    <summary>
+    </summary>
+    <language>en-US</language>
+    <projectUrl>https://github.com/juanonsoftware/webapi-oauth-intergration</projectUrl>
+    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <copyright>Copyright @ RabbitSoftware 2015</copyright>
+    <dependencies>
+      <group targetFramework="net45">
+      </group>
+    </dependencies>
+    <references></references>
+    <tags>RabbitSoftware OAuth</tags>
+  </metadata>
+  <files>
+    <file src="lib\" target="lib" />
+    <file src="tools\" target="tools" />
+    <file src="content\" target="content" />
+  </files>
+</package>
