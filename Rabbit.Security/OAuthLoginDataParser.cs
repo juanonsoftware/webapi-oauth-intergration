@@ -28,10 +28,10 @@ namespace Rabbit.Security
                 {
                     ProviderName = nameClaim.Issuer,
                     ProviderKey = nameClaim.Value,
-                    UserName = identity.FindFirst(ClaimTypes.Name).Value,
-                    Name = identity.FindFirst(Claims.ExternalName).Value,
-                    Email = identity.FindFirst(ClaimTypes.Email).Value,
-                    ExternalAccessToken = identity.FindFirst(Claims.ExternalAccessToken).Value,
+                    UserName = identity.GetFirstOrDefault(ClaimTypes.Name),
+                    Name = identity.GetFirstOrDefault(Claims.ExternalName),
+                    Email = identity.GetFirstOrDefault(ClaimTypes.Email),
+                    ExternalAccessToken = identity.GetFirstOrDefault(Claims.ExternalAccessToken),
                 };
 
             return loginData;

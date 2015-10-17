@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Claims.cs" />
+    <Compile Include="ClaimsIdentityExtensions.cs" />
     <Compile Include="ExternalLoginData.cs" />
     <Compile Include="ILoginDataParser.cs" />
     <Compile Include="OAuthLoginDataParser.cs" />
