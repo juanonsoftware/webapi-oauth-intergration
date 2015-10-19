@@ -3,6 +3,7 @@ using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.MicrosoftAccount;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.Owin.Security.Twitter;
 using Owin;
 using Owin.Security.Providers.GitHub;
 using Owin.Security.Providers.Yahoo;
@@ -58,6 +59,12 @@ namespace WebApiExternalAuth.Configuration
                 Provider = new GitHubCustomAuthenticationProvider()
             });
 
+            app.UseTwitterAuthentication(new TwitterAuthenticationOptions()
+            {
+                ConsumerKey = "ooLB5tn3zkIyfI9CID3DmiTld",
+                ConsumerSecret = "K5XsAmByQoW8oGIXjE1wIqSQUhx5Eztnzi5aUHdRLdGcYfGEJi",
+                Provider = new TwitterCustomAuthenticationProvider()
+            });
         }
     }
 }
