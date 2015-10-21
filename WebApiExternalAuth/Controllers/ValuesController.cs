@@ -14,13 +14,14 @@ namespace WebApiExternalAuth.Controllers
         }
 
         // GET api/values
-        [Authorize]
         public dynamic Get()
         {
             return new
                 {
                     Data = DateTime.Now,
-                    IsAuthenticated = User.Identity.IsAuthenticated
+                    User.Identity.IsAuthenticated,
+                    User.Identity.Name,
+                    User.Identity.AuthenticationType
                 };
         }
     }
