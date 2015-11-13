@@ -1,14 +1,15 @@
-﻿using System;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Text;
-using System.Web.Http;
+﻿using BrockAllen.MembershipReboot;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
 using Rabbit.Security;
 using Rabbit.Web.Owin;
+using System;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Text;
+using System.Web.Http;
 using WebApiExternalAuth.Configuration;
 using WebApiExternalAuth.Models;
 
@@ -17,10 +18,12 @@ namespace WebApiExternalAuth.Controllers
     public class OAuthController : ApiController
     {
         private readonly ILoginDataParser _loginDataParser;
+        private readonly UserAccountService _userAccountService;
 
-        public OAuthController(ILoginDataParser loginDataParser)
+        public OAuthController(ILoginDataParser loginDataParser, UserAccountService authenticationService)
         {
             _loginDataParser = loginDataParser;
+            _userAccountService = authenticationService;
         }
 
         [HttpGet]
@@ -48,6 +51,12 @@ namespace WebApiExternalAuth.Controllers
                     Request.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
                     return new ChallengeResult(provider, Request);
                 }
+            }
+
+            var userAccount = _userAccountService.GetByUsername(loginData.Profile);
+            if (userAccount == null)
+            {
+                var newAccount = _userAccountService.CreateAccount(string.Empty, Guid.NewGuid().ToString(), loginData.Email);
             }
 
             var tokenObject = GenerateLocalAccessTokenResponse(User.Identity.Name);

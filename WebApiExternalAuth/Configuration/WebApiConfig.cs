@@ -1,5 +1,5 @@
-﻿using System.Web.Http;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Web.Http;
 
 namespace WebApiExternalAuth.Configuration
 {

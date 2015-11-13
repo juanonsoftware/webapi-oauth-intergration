@@ -21,6 +21,8 @@ namespace WebApiExternalAuth
             appBuilder.ConfigureSecurity();
 
             appBuilder.UseWebApi(configuration);
+
+            MembershipRebootConfig.Configure();
         }
     }
 }
