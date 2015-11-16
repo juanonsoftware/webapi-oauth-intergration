@@ -56,6 +56,10 @@
     <Compile Include="Configuration\Modules\MembershipRebootServicesModule.cs" />
     <Compile Include="Configuration\Modules\OAuthModule.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Services\AccountManagementService.cs" />
+    <Compile Include="Services\IAccountManagementService.cs" />
+    <Compile Include="Services\AccountDto.cs" />
     <Compile Include="Models\AccessTokenGenerator.cs" />
     <Compile Include="Models\LoginDataParser.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
@@ -162,8 +166,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Rabbit.Security.1.0.0\lib\Rabbit.Security.dll</HintPath>
+      <HintPath>..\packages\Rabbit.Security.1.1.1\lib\Rabbit.Security.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.SimpleInjectorDemo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.SimpleInjectorDemo.1.0.0-Beta1\lib\Rabbit.SimpleInjectorDemo.dll</HintPath>

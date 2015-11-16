@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.OAuth;
 using Microsoft.Owin.Security.Twitter;
 using Owin;
 using Owin.Security.Providers.GitHub;
+using Owin.Security.Providers.LinkedIn;
 using Owin.Security.Providers.Yahoo;
 using WebApiExternalAuth.Providers;
 
@@ -75,6 +76,12 @@ namespace WebApiExternalAuth.Configuration
                     "B13EC36903F8BF4701D498261A0802EF63642BC3", // DigiCert High Assurance EV Root CA
                 }),
                 Provider = new TwitterCustomAuthenticationProvider()
+            });
+
+            app.UseLinkedInAuthentication(new LinkedInAuthenticationOptions()
+            {
+                ClientId = "77m16velrufp9j",
+                ClientSecret = "kuNnueDpkVlj2nz4"
             });
         }
     }

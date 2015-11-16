@@ -2,6 +2,7 @@
 using Rabbit.IOC;
 using SimpleInjector;
 using SimpleInjector.Packaging;
+using WebApiExternalAuth.Services;
 
 namespace WebApiExternalAuth.Configuration.Modules
 {
@@ -10,6 +11,7 @@ namespace WebApiExternalAuth.Configuration.Modules
         public void RegisterServices(Container container)
         {
             container.RegisterSingleton<OAuthBearerAuthenticationOptions>();
+            container.Register<IAccountManagementService, AccountManagementService>();
         }
     }
 }
