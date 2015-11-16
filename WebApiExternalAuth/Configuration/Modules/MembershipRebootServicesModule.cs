@@ -1,5 +1,6 @@
 ﻿using BrockAllen.MembershipReboot;
 using BrockAllen.MembershipReboot.Ef;
+using BrockAllen.MembershipReboot.WebHost;
 using Rabbit.IOC;
 using SimpleInjector;
 using SimpleInjector.Packaging;
@@ -12,7 +13,8 @@ namespace WebApiExternalAuth.Configuration.Modules
         {
             container.Register(() => new DefaultMembershipRebootDatabase());
             container.Register<IUserAccountRepository, DefaultUserAccountRepository>();
-            container.Register(() => new UserAccountService(container.GetInstance<IUserAccountRepository>()), Lifestyle.Scoped);
+            container.Register(() => new UserAccountService(container.GetInstance<IUserAccountRepository>()));
+            container.Register<AuthenticationService>(() => new SamAuthenticationService(container.GetInstance<UserAccountService>()), Lifestyle.Scoped);
         }
     }
 }

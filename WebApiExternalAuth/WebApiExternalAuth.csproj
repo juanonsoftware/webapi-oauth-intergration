@@ -54,7 +54,9 @@
     <Compile Include="Configuration\MembershipRebootConfig.cs" />
     <Compile Include="Configuration\Modules\GlobalServicesModule.cs" />
     <Compile Include="Configuration\Modules\MembershipRebootServicesModule.cs" />
+    <Compile Include="Configuration\Modules\OAuthModule.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
+    <Compile Include="Models\AccessTokenGenerator.cs" />
     <Compile Include="Models\LoginDataParser.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
@@ -87,6 +89,10 @@
     </Reference>
     <Reference Include="BrockAllen.MembershipReboot.Ef, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BrockAllen.MembershipReboot.Ef.8.0.0\lib\net45\BrockAllen.MembershipReboot.Ef.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BrockAllen.MembershipReboot.WebHost, Version=7.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BrockAllen.MembershipReboot.WebHost.7.1.0\lib\net45\BrockAllen.MembershipReboot.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">

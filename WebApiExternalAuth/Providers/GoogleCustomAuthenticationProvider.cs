@@ -1,7 +1,7 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.Owin.Security.Google;
+﻿using Microsoft.Owin.Security.Google;
 using Rabbit.Security;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace WebApiExternalAuth.Providers
 {

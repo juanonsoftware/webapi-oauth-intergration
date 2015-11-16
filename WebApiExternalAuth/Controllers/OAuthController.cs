@@ -1,8 +1,6 @@
 ﻿using BrockAllen.MembershipReboot;
+using BrockAllen.MembershipReboot.Relational;
 using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Linq;
 using Rabbit.Security;
 using Rabbit.Web.Owin;
 using System;
@@ -10,7 +8,6 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Web.Http;
-using WebApiExternalAuth.Configuration;
 using WebApiExternalAuth.Models;
 
 namespace WebApiExternalAuth.Controllers
@@ -18,12 +15,14 @@ namespace WebApiExternalAuth.Controllers
     public class OAuthController : ApiController
     {
         private readonly ILoginDataParser _loginDataParser;
+        private readonly AccessTokenGenerator _tokenGenerator;
         private readonly UserAccountService _userAccountService;
 
-        public OAuthController(ILoginDataParser loginDataParser, UserAccountService authenticationService)
+        public OAuthController(ILoginDataParser loginDataParser, AuthenticationService authenticationService, AccessTokenGenerator tokenGenerator)
         {
             _loginDataParser = loginDataParser;
-            _userAccountService = authenticationService;
+            _tokenGenerator = tokenGenerator;
+            _userAccountService = authenticationService.UserAccountService;
         }
 
         [HttpGet]
@@ -53,50 +52,25 @@ namespace WebApiExternalAuth.Controllers
                 }
             }
 
-            var userAccount = _userAccountService.GetByUsername(loginData.Profile);
+            var userAccount = (RelationalUserAccount)_userAccountService.GetByEmail(loginData.Email);
+
             if (userAccount == null)
             {
-                var newAccount = _userAccountService.CreateAccount(string.Empty, Guid.NewGuid().ToString(), loginData.Email);
+                var userName = loginData.GetUserName();
+                userAccount = (RelationalUserAccount)_userAccountService.CreateAccount(userName, Guid.NewGuid().ToString(), loginData.Email);
             }
 
-            var tokenObject = GenerateLocalAccessTokenResponse(User.Identity.Name);
+            var token = _tokenGenerator.Generate(new Claim[]
+            {
+                new Claim(ClaimTypes.Email, loginData.Email),
+                new Claim(ClaimTypes.Name, loginData.Name),
+            });
 
             var sb = new StringBuilder();
             sb.Append(returnUrl);
-            sb.AppendFormat("#access_token={0}&provider={1}&name={2}", tokenObject["access_token"], loginData.ProviderName, loginData.Name);
+            sb.AppendFormat("#access_token={0}&provider={1}&name={2}", token, loginData.ProviderName, loginData.Name);
 
             return Redirect(sb.ToString());
-        }
-
-        private JObject GenerateLocalAccessTokenResponse(string userName)
-        {
-            var tokenExpiration = TimeSpan.FromDays(1);
-
-            var identity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
-
-            identity.AddClaim(new Claim(ClaimTypes.Name, userName));
-            identity.AddClaim(new Claim("role", "user"));
-
-            var props = new AuthenticationProperties()
-            {
-                IssuedUtc = DateTime.UtcNow,
-                ExpiresUtc = DateTime.UtcNow.Add(tokenExpiration),
-            };
-
-            var ticket = new AuthenticationTicket(identity, props);
-
-            var accessToken = SecurityConfig.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
-
-            JObject tokenResponse = new JObject(
-                new JProperty("userName", userName),
-                new JProperty("access_token", accessToken),
-                new JProperty("token_type", "bearer"),
-                new JProperty("expires_in", tokenExpiration.TotalSeconds.ToString()),
-                new JProperty(".issued", ticket.Properties.IssuedUtc.ToString()),
-                new JProperty(".expires", ticket.Properties.ExpiresUtc.ToString())
-                );
-
-            return tokenResponse;
         }
     }
 }

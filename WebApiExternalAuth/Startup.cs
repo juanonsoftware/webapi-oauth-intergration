@@ -1,6 +1,8 @@
 ﻿using Microsoft.Owin;
 using Microsoft.Owin.Cors;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
+using SimpleInjector.Integration.WebApi;
 using WebApiExternalAuth;
 using WebApiExternalAuth.Configuration;
 
@@ -12,14 +14,17 @@ namespace WebApiExternalAuth
     {
         public void Configuration(IAppBuilder appBuilder)
         {
+            var container = IocConfig.BuildContainer();
             var configuration = WebApiConfig.Register();
 
-            configuration.RegisterDependencyResolver();
+            // Register dependency resolver
+            configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
 
+            // Configure OAuth
+            appBuilder.ConfigureAuthentication(container.GetInstance<OAuthBearerAuthenticationOptions>());
+            appBuilder.ConfigureExternalProviders();
+            
             appBuilder.UseCors(CorsOptions.AllowAll);
-
-            appBuilder.ConfigureSecurity();
-
             appBuilder.UseWebApi(configuration);
 
             MembershipRebootConfig.Configure();

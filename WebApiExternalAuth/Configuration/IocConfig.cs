@@ -16,7 +16,7 @@ namespace WebApiExternalAuth.Configuration
             configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
 
-        private static Container BuildContainer()
+        public static Container BuildContainer()
         {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();

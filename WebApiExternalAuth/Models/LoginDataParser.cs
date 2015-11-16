@@ -5,6 +5,11 @@ namespace WebApiExternalAuth.Models
 {
     public static class ClaimsIdentityExtensions
     {
+        public static string GetUserName(this ExternalLoginData loginData)
+        {
+            return string.Format("{0}_{1}", loginData.ProviderName, loginData.ProviderKey);
+        }
+
         public static void TryBuildCustomData(this ClaimsIdentity identity, ref ExternalLoginData loginData)
         {
             if (Providers.Facebook.ToString().Equals(loginData.ProviderName))
