@@ -6,6 +6,6 @@
         public const string ExternalExpiresIn = "ExternalExpiresIn";
         public const string ExternalProfile = "ExternalProfile";
         public const string ExternalEmail = "ExternalEmail";
-        public const string ExternalName = "ExternalName";
+        public const string ExternalUserName = "ExternalUserName";
     }
 }

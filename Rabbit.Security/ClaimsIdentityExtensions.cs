@@ -9,5 +9,10 @@ namespace Rabbit.Security
             var claim = identity.FindFirst(claimType);
             return (claim == null) ? string.Empty : claim.Value;
         }
+
+        public static string GetEmail(this ClaimsIdentity identity)
+        {
+            return identity.GetFirstOrDefault(ClaimTypes.Email);
+        }
     }
 }

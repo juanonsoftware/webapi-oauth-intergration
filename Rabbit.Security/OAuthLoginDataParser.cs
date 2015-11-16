@@ -13,7 +13,6 @@ namespace Rabbit.Security
             }
 
             var nameClaim = identity.FindFirst(ClaimTypes.NameIdentifier);
-
             if (nameClaim == null || String.IsNullOrEmpty(nameClaim.Issuer) || String.IsNullOrEmpty(nameClaim.Value))
             {
                 throw new ApplicationException("Can not find a claim of ClaimTypes.NameIdentifier");
@@ -28,8 +27,8 @@ namespace Rabbit.Security
                 {
                     ProviderName = nameClaim.Issuer,
                     ProviderKey = nameClaim.Value,
-                    UserName = identity.GetFirstOrDefault(ClaimTypes.Name),
-                    Name = identity.GetFirstOrDefault(Claims.ExternalName),
+                    UserName = identity.GetFirstOrDefault(Claims.ExternalUserName),
+                    Name = identity.GetFirstOrDefault(ClaimTypes.Name),
                     Email = identity.GetFirstOrDefault(ClaimTypes.Email),
                     ExternalAccessToken = identity.GetFirstOrDefault(Claims.ExternalAccessToken),
                 };
