@@ -16,7 +16,6 @@ namespace Rabbit.Security
         public string Name { get; set; }
         public string Email { get; set; }
         public string Profile { get; set; }
-        public string ExternalAccessToken { get; set; }
         public IDictionary<string, object> Properties { get; private set; }
     }
 }

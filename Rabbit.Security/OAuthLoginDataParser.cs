@@ -30,7 +30,6 @@ namespace Rabbit.Security
                     UserName = identity.GetFirstOrDefault(Claims.ExternalUserName),
                     Name = identity.GetFirstOrDefault(ClaimTypes.Name),
                     Email = identity.GetFirstOrDefault(ClaimTypes.Email),
-                    ExternalAccessToken = identity.GetFirstOrDefault(Claims.ExternalAccessToken),
                 };
 
             return loginData;
