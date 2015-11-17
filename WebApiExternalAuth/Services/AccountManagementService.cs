@@ -20,7 +20,6 @@ namespace WebApiExternalAuth.Services
         public void CreateOrUpdateAccount(ClaimsIdentity claimsIdentity, AccountDto accountInfo)
         {
             var loginData = _loginDataParser.Parse(claimsIdentity);
-            claimsIdentity.TryBuildCustomData(ref loginData);
 
             var userAccount = _userAccountService.GetByEmail(loginData.Email);
             if (userAccount == null)

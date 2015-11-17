@@ -9,5 +9,6 @@
         Microsoft,
         Yahoo,
         Twitter,
+        LinkedIn,
     }
 }

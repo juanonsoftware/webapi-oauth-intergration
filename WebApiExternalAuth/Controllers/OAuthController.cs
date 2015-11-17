@@ -37,7 +37,6 @@ namespace WebApiExternalAuth.Controllers
 
             var claimsIdentity = User.Identity as ClaimsIdentity;
             var loginData = _loginDataParser.Parse(claimsIdentity);
-            claimsIdentity.TryBuildCustomData(ref loginData);
 
             if (!string.Equals(loginData.ProviderName, provider, StringComparison.InvariantCultureIgnoreCase))
             {

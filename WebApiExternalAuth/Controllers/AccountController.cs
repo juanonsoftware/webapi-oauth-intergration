@@ -18,7 +18,7 @@ namespace WebApiExternalAuth.Controllers
         }
 
         [HttpPost]
-        public dynamic BuildAccount(AccountDto accountInfo)
+        public dynamic CreateOrUpdate(AccountDto accountInfo)
         {
             _accountManagementService.CreateOrUpdateAccount((ClaimsIdentity)User.Identity, accountInfo);
             return Request.CreateResponse(HttpStatusCode.OK);

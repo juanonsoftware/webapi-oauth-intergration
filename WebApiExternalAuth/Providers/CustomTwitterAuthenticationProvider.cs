@@ -1,11 +1,11 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.Owin.Security.Twitter;
+﻿using Microsoft.Owin.Security.Twitter;
 using Rabbit.Security;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace WebApiExternalAuth.Providers
 {
-    public class TwitterCustomAuthenticationProvider : TwitterAuthenticationProvider
+    public class CustomTwitterAuthenticationProvider : TwitterAuthenticationProvider
     {
         public override Task Authenticated(TwitterAuthenticatedContext context)
         {
