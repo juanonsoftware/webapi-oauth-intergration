@@ -33,6 +33,8 @@
     <Compile Include="Claims.cs" />
     <Compile Include="ClaimsIdentityExtensions.cs" />
     <Compile Include="ExternalLoginData.cs" />
+    <Compile Include="IExternalLoginDataParser.cs" />
+    <Compile Include="IExternalLoginDataParserFactory.cs" />
     <Compile Include="ILoginDataParser.cs" />
     <Compile Include="OAuthLoginDataParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

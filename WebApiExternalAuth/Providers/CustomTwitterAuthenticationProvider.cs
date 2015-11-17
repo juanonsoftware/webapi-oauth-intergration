@@ -10,7 +10,6 @@ namespace WebApiExternalAuth.Providers
         public override Task Authenticated(TwitterAuthenticatedContext context)
         {
             context.Identity.AddClaim(new Claim(Claims.ExternalAccessToken, context.AccessToken));
-            context.Identity.AddClaim(new Claim(Claims.ExternalUserName, context.ScreenName));
 
             return base.Authenticated(context);
         }
