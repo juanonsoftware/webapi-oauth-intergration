@@ -2,7 +2,9 @@
 using Microsoft.AspNet.Identity;
 using Rabbit.Security;
 using Rabbit.Web.Owin;
+using Rabbit.WebApi;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -50,11 +52,14 @@ namespace WebApiExternalAuth.Controllers
             var accountLinked = _userAccountService.GetByLinkedAccount(loginData.ProviderName, loginData.ProviderKey);
             var emailExists = _userAccountService.EmailExists(loginData.Email);
 
-            var response = Request.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Acc-AccessToken", token);
-            response.Headers.Add("Acc-IsLinked", (accountLinked != null).ToString());
-            response.Headers.Add("Acc-EmailExists", emailExists.ToString());
+            var accountHeaders = new Dictionary<string, object>()
+            {
+                {"Acc-AccessToken", token},
+                {"Acc-IsLinked", (accountLinked != null)},
+                {"Acc-EmailExists", emailExists}
+            };
 
+            var response = Request.CreateResponse(HttpStatusCode.OK).AddOrUpdateHeaders(accountHeaders);
             return new ResponseMessageResult(response);
         }
     }
