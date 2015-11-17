@@ -173,8 +173,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Rabbit.Security\bin\Release\Rabbit.Security.dll</HintPath>
+      <HintPath>..\packages\Rabbit.Security.1.2.0\lib\Rabbit.Security.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.SimpleInjectorDemo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.SimpleInjectorDemo.1.0.0-Beta1\lib\Rabbit.SimpleInjectorDemo.dll</HintPath>
