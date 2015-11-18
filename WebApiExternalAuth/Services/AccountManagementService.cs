@@ -1,6 +1,7 @@
 ﻿using BrockAllen.MembershipReboot;
 using Rabbit.Security;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using WebApiExternalAuth.Models;
 
@@ -25,7 +26,11 @@ namespace WebApiExternalAuth.Services
             if (userAccount == null)
             {
                 var userName = loginData.GetUserName();
-                userAccount = _userAccountService.CreateAccount(userName, Guid.NewGuid().ToString(), loginData.Email);
+                var claims = new List<Claim>
+                {
+                };
+
+                userAccount = _userAccountService.CreateAccount(userName, Guid.NewGuid().ToString(), accountInfo.Email, claims: claims);
             }
 
             _userAccountService.AddOrUpdateLinkedAccount(userAccount, loginData.ProviderName, loginData.ProviderKey, claimsIdentity.Claims);
