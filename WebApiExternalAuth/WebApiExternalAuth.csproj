@@ -64,6 +64,7 @@
     <Compile Include="Models\LinkedInClaimsParser.cs" />
     <Compile Include="Models\TwitterClaimsParser.cs" />
     <Compile Include="Providers\CustomLinkedInAuthenticationProvider.cs" />
+    <Compile Include="Services\AccountLightDto.cs" />
     <Compile Include="Services\AccountManagementService.cs" />
     <Compile Include="Services\IAccountManagementService.cs" />
     <Compile Include="Services\AccountDto.cs" />

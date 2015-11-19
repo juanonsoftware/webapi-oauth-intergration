@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
@@ -7,7 +6,7 @@ using WebApiExternalAuth.Services;
 
 namespace WebApiExternalAuth.Controllers
 {
-    [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
+    [Authorize]
     public class AccountController : ApiController
     {
         private readonly IAccountManagementService _accountManagementService;
@@ -15,6 +14,15 @@ namespace WebApiExternalAuth.Controllers
         public AccountController(IAccountManagementService accountManagementService)
         {
             _accountManagementService = accountManagementService;
+        }
+
+        /// <summary>
+        /// Get account information
+        /// </summary>
+        /// <returns></returns>
+        public dynamic Get()
+        {
+            return _accountManagementService.GetAccount((ClaimsIdentity)User.Identity);
         }
 
         [HttpPost]

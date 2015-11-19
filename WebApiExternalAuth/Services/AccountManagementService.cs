@@ -26,6 +26,8 @@ namespace WebApiExternalAuth.Services
             if (userAccount == null)
             {
                 var userName = loginData.GetUserName();
+
+                // TODO: add account's claims
                 var claims = new List<Claim>
                 {
                 };
@@ -34,6 +36,19 @@ namespace WebApiExternalAuth.Services
             }
 
             _userAccountService.AddOrUpdateLinkedAccount(userAccount, loginData.ProviderName, loginData.ProviderKey, claimsIdentity.Claims);
+        }
+
+        public AccountLightDto GetAccount(ClaimsIdentity claimsIdentity)
+        {
+            var loginData = _loginDataParser.Parse(claimsIdentity);
+
+            return new AccountLightDto()
+            {
+                Email = loginData.Email,
+                Name = loginData.Name,
+                ProviderName = loginData.ProviderName,
+                Profile = loginData.Profile
+            };
         }
     }
 }
