@@ -57,6 +57,7 @@
     <Compile Include="Configuration\Modules\OAuthModule.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CreateAccountViewModel.cs" />
     <Compile Include="Models\ExternalLoginDataParserFactory.cs" />
     <Compile Include="Models\FacebookClaimsParser.cs" />
     <Compile Include="Models\GitHubClaimsParser.cs" />
@@ -66,10 +67,11 @@
     <Compile Include="Providers\CustomLinkedInAuthenticationProvider.cs" />
     <Compile Include="Services\AccountLightDto.cs" />
     <Compile Include="Services\AccountManagementService.cs" />
+    <Compile Include="Services\CustomClaims.cs" />
+    <Compile Include="Services\CustomizationModes.cs" />
     <Compile Include="Services\IAccountManagementService.cs" />
     <Compile Include="Services\AccountDto.cs" />
     <Compile Include="Models\AccessTokenGenerator.cs" />
-    <Compile Include="Models\LoginDataParser.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Providers\FacebookCustomAuthenticationProvider.cs" />
     <Compile Include="Providers\CustomGitHubAuthenticationProvider.cs" />

@@ -8,6 +8,8 @@ namespace WebApiExternalAuth.Configuration
         public static void Configure()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DefaultMembershipRebootDatabase, BrockAllen.MembershipReboot.Ef.Migrations.Configuration>());
+
+
         }
     }
 }

@@ -19,16 +19,23 @@ namespace WebApiExternalAuth.Controllers
         /// <summary>
         /// Get account information
         /// </summary>
-        /// <returns></returns>
-        public dynamic Get()
+        public dynamic GetCurrentAccount()
         {
             return _accountManagementService.GetAccount((ClaimsIdentity)User.Identity);
         }
 
         [HttpPost]
-        public dynamic CreateOrUpdate(AccountDto accountInfo)
+        public dynamic CreateAccount(CreateAccountViewModel accountViewModel)
         {
+            var accountInfo = new AccountDto()
+            {
+                Email = accountViewModel.Email,
+                Name = accountViewModel.Name,
+                CustomizationEnabled = accountViewModel.CustomizationEnabled
+            };
+
             _accountManagementService.CreateOrUpdateAccount((ClaimsIdentity)User.Identity, accountInfo);
+
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
