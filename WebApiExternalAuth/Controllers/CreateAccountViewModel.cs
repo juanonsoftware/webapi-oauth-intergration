@@ -6,6 +6,7 @@ namespace WebApiExternalAuth.Controllers
     {
         public bool CustomizationEnabled { get; set; }
 
+        [Required]
         [MaxLength(255)]
         [MinLength(2)]
         public string Name { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Rabbit.WebApi;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
@@ -25,13 +26,13 @@ namespace WebApiExternalAuth.Controllers
         }
 
         [HttpPost]
-        public dynamic CreateAccount(CreateAccountViewModel accountViewModel)
+        public dynamic CreateAccount([ParameterRequired] CreateAccountViewModel account)
         {
             var accountInfo = new AccountDto()
             {
-                Email = accountViewModel.Email,
-                Name = accountViewModel.Name,
-                CustomizationEnabled = accountViewModel.CustomizationEnabled
+                Email = account.Email,
+                Name = account.Name,
+                CustomizationEnabled = account.CustomizationEnabled
             };
 
             _accountManagementService.CreateOrUpdateAccount((ClaimsIdentity)User.Identity, accountInfo);

@@ -41,8 +41,10 @@ namespace WebApiExternalAuth.Services
 
                 var claims = new List<Claim>
                 {
-                    new Claim(CustomClaims.CustomizationModes, ((int)customizationModes).ToString(CultureInfo.InvariantCulture))
+                    new Claim(CustomClaims.CustomizationModes, ((int) customizationModes).ToString(CultureInfo.InvariantCulture))
                 };
+
+                _userAccountService.UpdateClaims(userAccount.ID, claims);
             }
 
             _userAccountService.AddOrUpdateLinkedAccount(userAccount, loginData.ProviderName, loginData.ProviderKey, claimsIdentity.Claims);
@@ -73,15 +75,6 @@ namespace WebApiExternalAuth.Services
             {
                 customizationModes &= ~CustomizationModes.General;
             }
-
-            //if (accountInfo.TwoFactorsAuthenticationEnabled)
-            //{
-            //    customizationModes |= CustomizationModes.TwoFactorsAuthentication;
-            //}
-            //else
-            //{
-            //    customizationModes &= ~CustomizationModes.TwoFactorsAuthentication;
-            //}
 
             return customizationModes;
         }

@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace WebApiExternalAuth.Models
 {
-    public class AccessTokenGenerator
+    public class AccessTokenGenerator : IAccessTokenGenerator
     {
         private readonly OAuthBearerAuthenticationOptions _authenticationOptions;
 

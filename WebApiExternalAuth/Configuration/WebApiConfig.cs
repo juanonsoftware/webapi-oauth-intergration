@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Rabbit.WebApi.Filters;
+using Rabbit.WebApi.Filters.ValidationHandlers;
 using System.Web.Http;
 
 namespace WebApiExternalAuth.Configuration
@@ -21,8 +23,14 @@ namespace WebApiExternalAuth.Configuration
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            // Remove XML serialization
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            // Update Json serialization
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
+
+            config.Filters.Add(new ModelValidationFilterAttribute(new ParameterRequiredValidationHandler()));
+            config.Filters.Add(new ModelValidationFilterAttribute(new BadRequestValidationHandler()));
 
             return config;
         }
