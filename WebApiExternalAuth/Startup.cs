@@ -2,6 +2,7 @@
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using Rabbit.Security.MembershipReboot;
 using SimpleInjector.Integration.WebApi;
 using WebApiExternalAuth;
 using WebApiExternalAuth.Configuration;

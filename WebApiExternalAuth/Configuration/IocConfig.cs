@@ -1,4 +1,5 @@
 ﻿using Rabbit.IOC;
+using Rabbit.Security.MembershipReboot;
 using Rabbit.SimpleInjectorDemo.IocModules;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
@@ -21,7 +22,9 @@ namespace WebApiExternalAuth.Configuration
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
 
-            ModuleHelper.GetModuleTypes(typeof(WebApiConfig).Assembly, typeof(DemoServicesModule).Assembly)
+            ModuleHelper.GetModuleTypes(typeof(WebApiConfig).Assembly,
+                typeof(DemoServicesModule).Assembly,
+                typeof(MembershipRebootConfig).Assembly)
                 .CreateModules()
                 .Cast<IPackage>()
                 .ToList()

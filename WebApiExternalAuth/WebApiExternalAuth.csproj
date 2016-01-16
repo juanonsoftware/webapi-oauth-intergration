@@ -51,9 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\IocConfig.cs" />
-    <Compile Include="Configuration\MembershipRebootConfig.cs" />
     <Compile Include="Configuration\Modules\GlobalServicesModule.cs" />
-    <Compile Include="Configuration\Modules\MembershipRebootServicesModule.cs" />
     <Compile Include="Configuration\Modules\OAuthModule.cs" />
     <Compile Include="Configuration\SecurityConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -236,6 +234,12 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rabbit.Security.MembershipReboot\Rabbit.Security.MembershipReboot.csproj">
+      <Project>{775a9828-0e7f-42d2-8cf9-8390205c4af8}</Project>
+      <Name>Rabbit.Security.MembershipReboot</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

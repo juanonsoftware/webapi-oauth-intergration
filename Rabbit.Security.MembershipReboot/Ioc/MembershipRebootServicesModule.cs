@@ -5,7 +5,7 @@ using Rabbit.IOC;
 using SimpleInjector;
 using SimpleInjector.Packaging;
 
-namespace WebApiExternalAuth.Configuration.Modules
+namespace Rabbit.Security.MembershipReboot.Ioc
 {
     public class MembershipRebootServicesModule : ModuleBase, IPackage
     {
